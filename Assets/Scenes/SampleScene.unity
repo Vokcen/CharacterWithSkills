@@ -385,7 +385,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-42284
+  m_Name: pb_Mesh43184
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -549,7 +549,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-36922
+  m_Name: pb_Mesh43172
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -713,7 +713,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-133288
+  m_Name: pb_Mesh-14926
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20059,7 +20059,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-22406
+  m_Name: pb_Mesh43060
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20309,7 +20309,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -21004,7 +21004,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-31470
+  m_Name: pb_Mesh43122
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21204,7 +21204,7 @@ BoxCollider:
   m_GameObject: {fileID: 1636137873}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -21270,9 +21270,9 @@ GameObject:
   - component: {fileID: 1730148090}
   - component: {fileID: 1730148089}
   - component: {fileID: 1730148093}
-  - component: {fileID: 1730148088}
   - component: {fileID: 1730148094}
   - component: {fileID: 1730148087}
+  - component: {fileID: 1730148088}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -21290,15 +21290,15 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 10
+  m_Acceleration: 10000
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 999
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 0
+  m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
-  m_AutoRepath: 0
-  m_Height: 2
+  m_AutoRepath: 1
+  m_Height: 0.54
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -21314,6 +21314,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0fc303906070242ba1b6a1dc798411, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  ClickLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  kunai: {fileID: 7603788351875546566, guid: a9452b797ebc87443b940ba63a99f004, type: 3}
+  qSpeed: 5
+  distance: 0
 --- !u!136 &1730148089
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -21408,6 +21415,9 @@ MonoBehaviour:
   kunai: {fileID: 7603788351875546566, guid: a9452b797ebc87443b940ba63a99f004, type: 3}
   qSpeed: 0
   distance: 20.89
+  ground:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!120 &1730148094
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -22213,7 +22223,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-41862
+  m_Name: pb_Mesh43036
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

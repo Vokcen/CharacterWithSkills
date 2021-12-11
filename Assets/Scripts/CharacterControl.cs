@@ -14,6 +14,7 @@ public class CharacterControl : MonoBehaviour
     public GameObject kunai;
     [SerializeField] float qSpeed;
     public float distance;
+    public LayerMask ground;
  
     void Start()
     {
@@ -26,8 +27,8 @@ public class CharacterControl : MonoBehaviour
         
 
 
-
-        Move();
+ Move();
+    
         rayccc();
 
     }
@@ -41,11 +42,11 @@ public class CharacterControl : MonoBehaviour
         end = ray.GetPoint(10000f);
         RaycastHit hit;
 
+             
+        if (Physics.Raycast(ray, out hit, 10000f,ground))
+        { 
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-        {
-
-            if (Input.GetMouseButton(1))
+            if (Input.GetMouseButton(0))
             {
 
 
@@ -57,11 +58,9 @@ public class CharacterControl : MonoBehaviour
             }
             if (Input.GetKeyUp(KeyCode.Q))
             {
-                kunai = Instantiate(kunai, transform.position, kunai.transform.rotation);
-                Rigidbody rgKunai = kunai.GetComponent<Rigidbody>();
-                rgKunai.AddForce(hit.point * qSpeed);
-
-
+           
+                   GameObject projectile=Instantiate(kunai,transform.position,kunai.transform.rotation);
+                              projectile.GetComponent<Rigidbody>().AddForce(transform.forward*qSpeed,ForceMode.Impulse);
 
 
 
