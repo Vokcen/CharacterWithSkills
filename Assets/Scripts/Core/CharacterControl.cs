@@ -32,12 +32,19 @@ public class CharacterControl : MonoBehaviour
         Move();
 
         rayccc();
+        Animations();
 
     }
-    private void FixedUpdate()
+    private void Animations()
     {
+        if (control.velocity.magnitude <= 5f)
+        {
+            anim.SetBool("isRunning", false);
 
+        }
+        else anim.SetBool("isRunning", true);
     }
+
     void Move()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -45,13 +52,25 @@ public class CharacterControl : MonoBehaviour
         end = ray.GetPoint(10000f);
         RaycastHit hit;
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
 
+
+
+            anim.SetLayerWeight(1, 1f);
+            anim.SetTrigger("AutoAtack");
+            GameObject projectile = Instantiate(kunai, transform.position, kunai.transform.rotation);
+
+
+
+
+        }
         if (Physics.Raycast(ray, out hit, 10000f, ground))
         {
 
             if (Input.GetMouseButton(0))
             {
-                anim.SetBool("isMoving", true);
+
                 control.speed = speed;
 
 
@@ -60,25 +79,22 @@ public class CharacterControl : MonoBehaviour
 
 
             }
-            else anim.SetBool("isMoving", false);
-            if (Input.GetKeyUp(KeyCode.Q))
-            {
-                anim.SetBool("isAutoAtack", true);
-                control.speed = 0;
-                GameObject projectile = Instantiate(kunai, transform.position, kunai.transform.rotation);
 
 
 
-
-
-
-            }
-            else anim.SetBool("isAutoAtack", false);
 
 
         }
 
+
     }
+    void AnimState()
+    {
+        anim.SetLayerWeight(1, 1f);
+        anim.SetTrigger("AutoAtack");
+
+    }
+
     void rayccc()
     {
 
