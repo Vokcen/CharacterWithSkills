@@ -13,6 +13,7 @@ public class CharacterControl : MonoBehaviour
     Vector3 end;
 
     public GameObject kunai;
+    public GameObject qAbility;
     [SerializeField] float qSpeed;
     public float distance;
     public LayerMask ground;
@@ -31,8 +32,9 @@ public class CharacterControl : MonoBehaviour
 
         Move();
 
-        rayccc();
+
         Animations();
+        QSkill();
 
     }
     private void Animations()
@@ -44,7 +46,20 @@ public class CharacterControl : MonoBehaviour
         }
         else anim.SetBool("isRunning", true);
     }
+    void QSkill()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            anim.SetLayerWeight(1, 1f);
+            anim.SetTrigger("AutoAtack");
+            GameObject w = Instantiate(qAbility, transform.position, qAbility.transform.rotation);
 
+        }
+    }
+    void WSkill()
+    {
+        
+    }
     void Move()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -52,10 +67,10 @@ public class CharacterControl : MonoBehaviour
         end = ray.GetPoint(10000f);
         RaycastHit hit;
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
 
-
+            transform.LookAt(target);
 
             anim.SetLayerWeight(1, 1f);
             anim.SetTrigger("AutoAtack");
@@ -68,7 +83,7 @@ public class CharacterControl : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 10000f, ground))
         {
 
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(1))
             {
 
                 control.speed = speed;
@@ -88,24 +103,8 @@ public class CharacterControl : MonoBehaviour
 
 
     }
-    void AnimState()
-    {
-        anim.SetLayerWeight(1, 1f);
-        anim.SetTrigger("AutoAtack");
 
-    }
 
-    void rayccc()
-    {
-
-        // OR
-        // Vector3 end = start + ray.direction * 10000;
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawRay(start, end);
-
-    }
 
 
 }
